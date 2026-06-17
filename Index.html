@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annie's Bird ID Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="game-container">
+        <h1>Annie's Bird ID Game</h1>
+
+        <div id="game-view">
+            <div id="status-bar">
+                <span id="score-display">Score: 0</span>
+                <span id="count-display">Bird: 1/20</span>
+            </div>
+
+            <img id="bird-image" src="" alt="Bird to identify">
+
+            <div id="ui">
+                <input type="text" id="guess-input" placeholder="TYPE BIRD NAME..." autocomplete="off">
+
+                <div class="button-row">
+                    <button id="hint-btn" onclick="showHint()">HINT?</button>
+                    <button id="submit-btn" onclick="checkGuess()">GUESS</button>
+                    <button id="pass-btn" onclick="passBird()">PASS</button>
+                </div>
+
+                <div id="hint-options" style="display: none;"></div>
+            </div>
+        </div>
+
+        <p id="result-message"></p>
+
+        <div id="summary-view" style="display: none;">
+            <h2 id="final-score-title">GAME OVER</h2>
+
+            <p id="mastery-line" style="text-align: center; font-size: 0.85rem; color: #555; margin-bottom: 20px;"></p>
+
+            <div id="passed-section" style="display: none;">
+                <h3>Birds you passed on:</h3>
+                <ul id="passed-list"></ul>
+            </div>
+
+            <div id="hinted-section" style="display: none;">
+                <h3>Birds you used a hint on:</h3>
+                <ul id="hinted-list"></ul>
+            </div>
+
+            <button id="restart-btn" onclick="restartGame()">START NEW GAME</button>
+        </div>
+
+        <div id="footer">Lots of Love, Henry x</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
