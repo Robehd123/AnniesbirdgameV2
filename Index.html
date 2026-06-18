@@ -12,6 +12,8 @@
         <h1>Annie's Bird ID Game</h1>
 
         <div id="game-view">
+            <div id="progress-bar"></div>
+
             <div id="status-bar">
                 <span id="score-display">Score: 0</span>
                 <span id="count-display">Bird: 1/20</span>
@@ -33,6 +35,10 @@
         </div>
 
         <p id="result-message"></p>
+
+        <p id="bird-fact" style="display: none;"></p>
+
+        <button id="next-btn" onclick="goNext()" style="display: none;">NEXT BIRD &rarr;</button>
 
         <div id="summary-view" style="display: none;">
             <h2 id="final-score-title">GAME OVER</h2>
