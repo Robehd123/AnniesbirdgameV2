@@ -2,63 +2,86 @@
 <html lang="en-GB">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>Annie's Bird ID Game</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="Kingfishericon.png">
+    <link rel="apple-touch-icon" href="Kingfishericon.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- White card sits inside the yellow robin background -->
     <div id="game-container">
-        <h1>Annie's Bird ID Game</h1>
 
-        <div id="game-view">
+        <div id="top-bar">
+            <h1>Annie's Bird ID Game</h1>
             <div id="progress-bar"></div>
-
             <div id="status-bar">
                 <span id="score-display">Score: 0</span>
                 <span id="count-display">Bird: 1/20</span>
             </div>
+        </div>
 
-            <img id="bird-image" src="" alt="Bird to identify">
+        <div id="game-view">
 
-            <div id="ui">
-                <input type="text" id="guess-input" placeholder="TYPE BIRD NAME..." autocomplete="off">
+            <div id="image-zone">
+                <img id="bird-image" src="" alt="Bird to identify">
+            </div>
 
-                <div class="button-row">
-                    <button id="hint-btn" onclick="showHint()">HINT?</button>
-                    <button id="submit-btn" onclick="checkGuess()">GUESS</button>
-                    <button id="pass-btn" onclick="passBird()">PASS</button>
+            <div id="bottom-panel">
+
+                <!-- STATE A: Guessing -->
+                <div id="guess-zone">
+                    <input
+                        type="text"
+                        id="guess-input"
+                        placeholder="TYPE BIRD NAME..."
+                        autocomplete="off"
+                        autocorrect="off"
+                        autocapitalize="none"
+                        spellcheck="false"
+                        inputmode="text"
+                    >
+                    <div id="hint-options"></div>
+                    <div class="button-row">
+                        <button id="hint-btn"   onclick="showHint()">HINT? (10)</button>
+                        <button id="submit-btn" onclick="checkGuess()">GUESS</button>
+                        <button id="pass-btn"   onclick="passBird()">PASS</button>
+                    </div>
                 </div>
 
-                <div id="hint-options" style="display: none;"></div>
+                <!-- STATE B: Result -->
+                <div id="result-zone">
+                    <p id="result-message"></p>
+                    <p id="bird-fact"></p>
+                    <button id="next-btn" onclick="nextBird()">NEXT BIRD &rarr;</button>
+                </div>
+
             </div>
         </div>
+    </div>
 
-        <p id="result-message"></p>
+    <!-- Summary: same card shape, shown as overlay -->
+    <div id="summary-view" style="display:none;">
+        <h2 id="final-score-title">GAME OVER</h2>
+        <p id="mastery-line"></p>
 
-        <p id="bird-fact" style="display: none;"></p>
-
-        <button id="next-btn" onclick="goNext()" style="display: none;">NEXT BIRD &rarr;</button>
-
-        <div id="summary-view" style="display: none;">
-            <h2 id="final-score-title">GAME OVER</h2>
-
-            <p id="mastery-line" style="text-align: center; font-size: 0.85rem; color: #555; margin-bottom: 20px;"></p>
-
-            <div id="passed-section" style="display: none;">
-                <h3>Birds you passed on:</h3>
-                <ul id="passed-list"></ul>
-            </div>
-
-            <div id="hinted-section" style="display: none;">
-                <h3>Birds you used a hint on:</h3>
-                <ul id="hinted-list"></ul>
-            </div>
-
-            <button id="restart-btn" onclick="restartGame()">START NEW GAME</button>
+        <div id="passed-section" style="display:none;">
+            <h3>Birds you passed on:</h3>
+            <ul id="passed-list"></ul>
         </div>
 
-        <div id="footer">Lots of Love, Henry x</div>
+        <div id="hinted-section" style="display:none;">
+            <h3>Birds you used a hint on:</h3>
+            <ul id="hinted-list"></ul>
+        </div>
+
+        <button onclick="restartGame()">START NEW GAME</button>
+        <p id="footer">Lots of Love, Henry x</p>
     </div>
 
     <script src="script.js"></script>
